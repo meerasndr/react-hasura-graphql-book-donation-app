@@ -112,3 +112,26 @@ In Terminal / Command Prompt, from the app's directory, run:
 
 This would open up the app in your default browser. After making sure everything is error-free, we can submit data through the form. Let's also make sure the data got submitted to the database by going back to our Hasura console and running a query or checking the database directly.
 
+### Deploying the app on Heroku
+
+We use the easiest way: 
+
+1. Push all our code to a Github repo
+2. Create a new app on Heroku
+3. Connect this app to the Github repo we just created
+4. Enable auto-deploy (everytime we push changes to Github, the hosted app gets updated too!)
+
+That's it! Our app is ready and deployed. Make sure everything is running smoothly once again.
+
+### What next?
+
+Now that we have the basics nailed down, there are other things we can explore using the same app:
+
+1. Securing the endpoint using an admin secret key
+2. Using JWT and Auth server to enable user roles and access
+3. Use Apollo Client with React and send out all sorts of GraphQL requests
+
+Explore these docs for more ideas as well:
+1. [GraphQL](https://graphql.github.io/graphql-spec/June2018/)
+2. [Hasura](https://docs.hasura.io/1.0/graphql/manual/index.html)
+3. [Apollo](https://www.apollographql.com/docs/)
