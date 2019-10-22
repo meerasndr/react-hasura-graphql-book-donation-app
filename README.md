@@ -1,4 +1,4 @@
-# Simple App based on Hasura's GraphQL Engine
+# Simple React App based on Hasura's GraphQL Engine
 
 ### What are we building?
 Acme Public Library needs to stock up on books, and they are looking for book donors. We are building a single-page app where book donors can enter details of the book and add it to Acme's database.
