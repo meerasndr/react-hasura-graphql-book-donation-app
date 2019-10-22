@@ -40,7 +40,31 @@ We have setup 'id' in both the tables to be Integer(auto-increment)
 
 'donatedbooks.author_id' is a foreign key that points to 'authors.id'.
 
-Let us set that up following this: https://docs.hasura.io/1.0/graphql/manual/schema/relationships/index.html
+Let us set that up based on this: https://docs.hasura.io/1.0/graphql/manual/schema/relationships/index.html
 
 Queries and Mutations can be tested out from the GraphiQL console.
+
+Once we are sure that all of this works well from GraphiQL, let's move on to our front-end.
+
+### Setting up the Front-end
+
+We assume that you have a basic understanding of Node, React, ReactDOM and HTTP requests. Otherwise, it is highly recommended that you familiarize yourself with these topics.
+
+You should already have [Node](https://nodejs.org/en/) installed on your computer.
+
+We will start by setting up the create-react-app boilerplate. And, then installing the necessary packages. In Terminal or Command Prompt, we use these commands:
+```
+npx create-react-app [app_name]
+cd [app_name]
+npm install axios bootstrap
+```
+
+The preferred method to connect our front-end to the GraphQL server is by using the Apollo Client in our app. But, to keep things simple, we will use a simple HTTP request using Axios.
+
+*Note that Apollo Client has several advantages over HTTP when it comes to abstraction and authentication. Feel free to try it out: * https://learn.hasura.io/graphql/react/apollo-client
+
+We will use the bootstrap library just to keep page styling simple and elegant.
+
+
+
 
