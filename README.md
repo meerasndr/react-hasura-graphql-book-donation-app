@@ -110,7 +110,7 @@ In Terminal / Command Prompt, from the app's directory, run:
 
 `npm start`
 
-This would open up the app in your default browser. After making sure everything is error-free, we can submit data through the form. Let's also make sure the data got submitted to the database by going back to our Hasura console and running a query or checking the database directly.
+This would open up the app in your default browser. After making sure everything is error-free, we can submit data through the form. Let's make sure the data got added to the database by checking back in our Hasura console.
 
 ### Deploying the app on Heroku
 
