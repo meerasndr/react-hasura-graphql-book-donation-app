@@ -1,26 +1,39 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import axios from 'axios';
+import Donationform from './Donationform';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+    addBook = (title,author) => {
+
+    axios({
+        url: 'https://book-donation-app.herokuapp.com/v1/graphql',
+        method: 'post',
+        data: { query:
+        `mutation{
+            insert_donatedbooks(objects:[
+            {
+                book_title: "${title}",
+                myauthor:{
+                data: {
+                    name: "${author}"
+                }
+                }
+            }
+        ]){ affected_rows}
+      }`
+    }
+      }).then((result) => {
+        console.log(result.data)
+      });
 }
 
+render(){
+    return(
+        <div>
+           <Donationform addBook={this.addBook} />
+        </div>
+    )
+    }
+}
 export default App;
