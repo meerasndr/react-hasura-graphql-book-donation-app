@@ -3,12 +3,12 @@ class Donationform extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            bookTitle: "",
-            authorName: ""
+            bookTitle: "", //default state empty textbox
+            authorName: ""  //default state empty textbox
         };
         this.handleInputChange = this.handleInputChange.bind(this);
     }
-    handleInputChange = event => {
+    handleInputChange = event => { //called every time the user changes textbox value
         const target = event.target;
         const value = target.value;
         const name = target.name;
@@ -17,8 +17,8 @@ class Donationform extends React.Component{
             [name] : value
         })
     }
-    handleSubmit = event => {
-        this.props.addBook(this.state.bookTitle, this.state.authorName);
+    handleSubmit = event => { // called when the Donate button is clicked
+        this.props.addBook(this.state.bookTitle, this.state.authorName); //props to be passed back to App.js with textbox values
         this.setState({bookTitle:'', authorName:''});
         alert("Your book "+this.state.bookTitle+" has been donated. Thank you for your contribution to the library!");
     }

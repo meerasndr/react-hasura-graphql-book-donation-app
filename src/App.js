@@ -3,11 +3,12 @@ import axios from 'axios';
 import Donationform from './Donationform';
 
 class App extends React.Component {
-
+    
+    //below function passes book data(title, author) to the backend via GraphQL
     addBook = (title,author) => {
 
-    axios({
-        url: 'https://book-donation-app.herokuapp.com/v1/graphql',
+    axios({                                                        //HTTP request sent via Axios 
+        url: 'https://book-donation-app.herokuapp.com/v1/graphql', //GraphQL Endpoint created using Hasura, deployed on Heroku
         method: 'post',
         data: { query:
         `mutation{
@@ -28,6 +29,7 @@ class App extends React.Component {
       });
 }
 
+//Render and pass props
 render(){
     return(
         <div>
