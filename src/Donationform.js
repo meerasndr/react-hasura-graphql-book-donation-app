@@ -83,7 +83,15 @@ class Donationform extends React.Component{
                     </div>
                 </div>
             </div>
+    
+        <div className="text-center">
+      
+        <a href="https://hasura.io/" rel="noopener noreferrer" target="_blank">
+            <img src="https://graphql-engine-cdn.hasura.io/img/powered_by_hasura_blue.svg" width = "10%" height = "10%" alt="logo" style = {{ margin: '5%' }}/>
+        </a>
+
         </div>
+    </div>
             )
     }
 }
