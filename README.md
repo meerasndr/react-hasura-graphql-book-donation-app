@@ -27,15 +27,15 @@ The Data tab on the top of the console is where we setup our database tables, co
 
 Our database is pretty straightforward. These are the tables and fields we need:
 
-1. donatedbooks (id, book_title, author_id)
-2. authors (id, name)
+    1. donatedbooks (id, book_title, author_id)
+    2. authors (id, name)
 
 Easy guide: https://docs.hasura.io/1.0/graphql/manual/getting-started/first-graphql-query.html
 
 We have setup 'id' in both the tables to be Integer(auto-increment)
 'donatedbooks.book_title' and 'authors.name' are of type String.
 
-##### Relationships in the schema
+#### Relationships in the schema
 
 'donatedbooks.author_id' is a foreign key that points to 'authors.id'.
 Let us set that up following this: https://docs.hasura.io/1.0/graphql/manual/schema/relationships/index.html
