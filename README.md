@@ -61,7 +61,8 @@ npm install axios bootstrap
 
 The preferred method to connect our front-end to the GraphQL server is by using the Apollo Client in our app. But, to keep things simple, we will use a simple HTTP request using Axios.
 
-*Note that Apollo Client has several advantages over HTTP when it comes to abstraction and authentication. Feel free to try it out: * https://learn.hasura.io/graphql/react/apollo-client
+*Note that Apollo Client has several advantages over HTTP when it comes to abstraction and authentication. Feel free to try it out:* 
+https://learn.hasura.io/graphql/react/apollo-client
 
 We will use the bootstrap library just to keep page styling simple and elegant.
 
