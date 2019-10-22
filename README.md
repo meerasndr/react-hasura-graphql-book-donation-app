@@ -68,8 +68,8 @@ We will use the bootstrap library to keep page styling simple and elegant.
 
 ### The React App
 Our app is mainly a form with two input fields:
-    ```Book Title
-    Author Name ```
+    `Book Title`
+    `Author Name `
 
 #### Donationform Component
 We use the component 'Donationform' to handle the above user input. The 'handleInputChange' takes care of the changes in the textbox values, and keeps updating state. The 'handleSubmit' function takes the state at the time of submission and passes the (title, author) values as props back to the parent component -> App.js (addBook function)
