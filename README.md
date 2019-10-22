@@ -61,11 +61,54 @@ npm install axios bootstrap
 
 The preferred method to connect our front-end to the GraphQL server is by using the Apollo Client in our app. But, to keep things simple, we will use a simple HTTP request using Axios.
 
-*Note that Apollo Client has several advantages over HTTP when it comes to abstraction and authentication. Feel free to try it out:* 
+*Note: Apollo Client has several advantages over HTTP when it comes to abstraction and authentication. Feel free to try it out:* 
 https://learn.hasura.io/graphql/react/apollo-client
 
-We will use the bootstrap library just to keep page styling simple and elegant.
+We will use the bootstrap library to keep page styling simple and elegant.
 
+### The React App
+Our app is mainly a form with two input fields:
+    ```Book Title
+    Author Name ```
 
+#### Donationform Component
+We use the component 'Donationform' to handle the above user input. The 'handleInputChange' takes care of the changes in the textbox values, and keeps updating state. The 'handleSubmit' function takes the state at the time of submission and passes the (title, author) values as props back to the parent component -> App.js (addBook function)
 
+#### App.js
+Here is where the actual HTTP call happens. In a real-world production scenario, we would have to consider factors like: endpoint securing, authentication and authorization. 
+
+In axios, we use a mutation similar to what we've tried earlier on GraphiQL.
+```
+axios({                                                        
+    url: 'https://book-donation-app.herokuapp.com/v1/graphql', 
+    method: 'post',
+    data: { query:
+        `mutation{
+            insert_donatedbooks(objects:[
+            {
+                book_title: "${title}",
+                myauthor:{
+                data: {
+                    name: "${author}"
+                    }
+                }
+            }
+        ]){ affected_rows}
+      }`
+    }
+      }).then((result) => {
+        console.log(result.data)
+      });
+
+```
+
+Axios is a promise-based HTTP client, so be sure to include the 'then' portion of the expression.
+
+#### Testing the app on Localhost
+
+In Terminal / Command Prompt, from the app's directory, run:
+
+`npm start`
+
+This would open up the app in your default browser. After making sure everything is error-free, we can submit data through the form. Let's also make sure the data got submitted to the database by going back to our Hasura console and running a query or checking the database directly.
 
