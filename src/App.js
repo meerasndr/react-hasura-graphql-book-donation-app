@@ -8,10 +8,10 @@ class App extends React.Component {
     addBook = (title,author) => {
 
     axios({                                                        //HTTP request sent via Axios
-        url: 'https://book-donation-app.herokuapp.com/v1/graphql', //GraphQL Endpoint created using Hasura, deployed on Heroku
-        method: 'post',
+        url: 'https://book-donation-app.herokuapp.com/v1/graphql', //GraphQL Endpoint created using Hasura, deployed on Heroku 
+        method: 'post',                                            //Using UPSERT to avoid duplication of author names
         data: { query:
-        `mutation upsert_donatedbooks {
+        `mutation upsert_donatedbooks {  
             insert_donatedbooks(objects:[
               {
                 book_title: "${title}",
