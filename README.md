@@ -34,7 +34,7 @@ Our database is pretty straightforward. These are the tables and fields we need:
 Easy guide: https://docs.hasura.io/1.0/graphql/manual/getting-started/first-graphql-query.html
 
 We have setup 'id' in both the tables to be Integer(auto-increment)
-'donatedbooks.book_title' and 'authors.name' are of type String.
+'donatedbooks.book_title' and 'authors.name' are of type String. 'authors.name' can be made into a unique key, since we do not want the same author to be inserted multiple times. (one-to-many relationship. An author could have written many books. A book has only one author, in our scenario)
 
 #### Relationships in the schema
 
@@ -77,24 +77,32 @@ We use the component 'Donationform' to handle the above user input. The 'handleI
 #### App.js
 Here is where the actual HTTP call happens. In a real-world production scenario, we would have to consider factors like: endpoint securing, authentication and authorization. 
 
-In axios, we use a mutation similar to what we've tried earlier on GraphiQL.
+We use the UPSERT mutation to avoid duplicate entries in the Author table.
+Here is more info on UPSERT: https://docs.hasura.io/1.0/graphql/manual/mutations/upsert.html
+
 ```
 axios({                                                        
-    url: 'https://book-donation-app.herokuapp.com/v1/graphql', 
-    method: 'post',
-    data: { query:
-        `mutation{
+        url: 'https://book-donation-app.herokuapp.com/v1/graphql',  
+        method: 'post',                                           
+        data: { query:
+        `mutation upsert_donatedbooks {  
             insert_donatedbooks(objects:[
-            {
+              {
                 book_title: "${title}",
                 myauthor:{
-                data: {
+                  data: {
                     name: "${author}"
-                    }
+                  },
+            on_conflict: {
+                constraint: authors_name_key,
+                update_columns: [name]
+            }     
                 }
-            }
-        ]){ affected_rows}
-      }`
+              }
+            ]
+            )
+            {affected_rows}
+          }`
     }
       }).then((result) => {
         console.log(result.data)
